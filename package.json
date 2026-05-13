@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "github-actions-ci-demo",
   "version": "1.0.0",
   "description": "GitHub Actions CI Demo",
@@ -8,13 +9,31 @@
     "test": "jest",
     "lint": "eslint ."
   },
+=======
+  "name": "github-actions-ci-lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+  "test": "jest --coverage",
+  "lint": "eslint ."
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+>>>>>>> 8b64fe3b2d800d62343769fee1ed1ce59402e8da
   "dependencies": {
     "express": "^5.2.1"
   },
   "devDependencies": {
     "eslint": "^10.3.0",
+<<<<<<< HEAD
     "globals": "^17.6.0",
     "jest": "^30.3.0",
+=======
+    "jest": "^30.4.2",
+>>>>>>> 8b64fe3b2d800d62343769fee1ed1ce59402e8da
     "supertest": "^7.2.2"
   }
 }
