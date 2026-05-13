@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-name: CI con Matriz
-=======
 name: CI Movies API
->>>>>>> 8b64fe3b2d800d62343769fee1ed1ce59402e8da
 
 on:
   push:
@@ -13,54 +9,33 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-<<<<<<< HEAD
-
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     strategy:
       matrix:
         node-version: [18, 20]
 
     steps:
-      - name: Checkout del codigo
-        uses: actions/checkout@v6
+      - name: Checkout del código
+        uses: actions/checkout@v4
 
       - name: Configurar Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
       - name: Instalar dependencias
         run: npm ci
 
       - name: Ejecutar linting
-        run: npm run lint
+        run: npm run lint --if-present
 
       - name: Ejecutar pruebas
         run: npm test
-=======
-    steps:
-      - name: Checkout del Código
-        uses: actions/checkout@v6
-
-      - name: Setup del entorno de ejecución Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: "20"
-
-      - name: Instalación de las dependencias
-        run: npm ci
-
-      - name: Ejecución de Linting
-        run: npm run lint
-
-      - name: Ejecución de Pruebas
-        run: npm test
 
       - name: Reporte de Cobertura
+        if: matrix.node-version == 20
         uses: actions/upload-artifact@v4
         with:
-          name: cobertura-final
+          name: cobertura-node-${{ matrix.node-version }}
           path: coverage/
->>>>>>> 8b64fe3b2d800d62343769fee1ed1ce59402e8da
